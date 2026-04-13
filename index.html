@@ -1,0 +1,188 @@
+index.html<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICS WORLD WIDE Technology</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* HEADER */
+.header {
+    background: #1e73e8;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+/* NAV */
+nav {
+    background: #333;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    background: #575757;
+}
+
+/* SECTIONS */
+.section {
+    display: none;
+    padding: 20px;
+}
+
+.active {
+    display: block;
+}
+
+/* CHAT BOX */
+.chat-box {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 400px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.message {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.user {
+    background: #1e73e8;
+    color: white;
+    text-align: right;
+}
+
+.bot {
+    background: #ddd;
+    text-align: left;
+}
+
+/* INPUT */
+.chat-input {
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+}
+
+.chat-input button {
+    padding: 10px;
+    background: #1e73e8;
+    color: white;
+    border: none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>NICS WORLD WIDE Technology</h1>
+    <p>Solutions for Modern Digital World</p>
+</div>
+
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('services')">Services</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('contact')">Contact</a>
+</nav>
+
+<!-- HOME WITH CHAT -->
+<div id="home" class="section active">
+    <h2>Chat na NICS 🤖</h2>
+
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Andika message...">
+        <button onclick="sendMessage()">Tuma</button>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="section">
+    <h2>Huduma Zetu</h2>
+    <p>Website Development, Software Support, IT Solutions</p>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+    <h2>Kuhusu Sisi</h2>
+    <p>Sisi ni NICS Technology tunatoa huduma za IT.</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+    <h2>Wasiliana Nasi</h2>
+    <p>Simu: +255781790783</p>
+    <p>Email: nicscomputerskills1@gmail.com</p>
+</div>
+
+<script>
+// NAVIGATION
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+// CHAT FUNCTION
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value;
+
+    if (message === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    // USER MESSAGE
+    let userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.innerText = message;
+    chatBox.appendChild(userMsg);
+
+    // BOT REPLY
+    let botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+
+    if (message.toLowerCase().includes("bei")) {
+        botMsg.innerText = "Huduma zetu zinaanzia Tsh 50,000 kutegemea na kazi.";
+    } else if (message.toLowerCase().includes("website")) {
+        botMsg.innerText = "Tunatengeneza website za kisasa kabisa 🔥";
+    } else {
+        botMsg.innerText = "Asante kwa kuwasiliana na NICS Technology 😊" mimi ni AI wa Nics";
+    }
+
+    setTimeout(() => {
+        chatBox.appendChild(botMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 500);
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
